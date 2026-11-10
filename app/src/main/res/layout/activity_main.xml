@@ -79,7 +79,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="18"
-            android:background="@color/material_dynamic_neutral50"
+            android:background="@color/black"
             android:gravity="center"
             android:text="OFF"
             android:textAlignment="center"
