@@ -15,14 +15,19 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText answerBox;
-    TextView tvNum1;
-    TextView tvNum2;
-    Button btnKefel;
-    Button btnUpto20;
-    Button btnChallenge;
 
-    Controller controller;
+    private MathViewModel viewModel;
+
+
+    private EditText answerBox;
+    private TextView tvNum1;
+    private TextView tvNum2;
+    private Button btnKefel;
+    private Button btnUpto20;
+    private Button btnChallenge;
+    private Button btnCheck;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
         btnKefel = findViewById(R.id.btnKefel);
         btnChallenge = findViewById(R.id.btnChallenge);
         btnUpto20 = findViewById(R.id.btnUpto20);
+        btnCheck = findViewById(R,.id.btnCheck)
 
 
 
-
-        controller = new Controller(this);
     }
 
     public void modeClicked(View view) {
