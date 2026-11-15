@@ -18,6 +18,6 @@ public abstract class Model {
     public abstract void ranInt();
 
     public boolean checkAns(int ans){
-        return num1 * num2 == ans;
+        return getNum1() * getNum2() == ans;
     }
 }

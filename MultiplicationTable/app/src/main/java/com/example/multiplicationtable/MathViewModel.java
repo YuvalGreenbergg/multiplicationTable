@@ -30,15 +30,15 @@ public class MathViewModel extends ViewModel {
         switch(gameType) {
             case Normal:
                 model = new Normal();
-                break;
+//                break;
 
             case UpTo20:
                 model = new UpTo20();
-                break;
+//                break;
 
             case Chellenge:
                 model = new Challenge();
-                break;
+//                break;
         }
         generateQuestion();
     }

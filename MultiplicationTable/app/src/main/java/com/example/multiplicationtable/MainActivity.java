@@ -12,13 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private MathViewModel viewModel;
-
-
     private EditText answerBox;
     private TextView tvNum1;
     private TextView tvNum2;
@@ -38,46 +37,52 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        viewModel = new ViewModelProvider(this).get(MathViewModel.class);
+
         answerBox = findViewById(R.id.answerBox);
         tvNum1 = findViewById(R.id.tvNum1);
         tvNum2 = findViewById(R.id.tvNum2);
         btnKefel = findViewById(R.id.btnKefel);
         btnChallenge = findViewById(R.id.btnChallenge);
         btnUpto20 = findViewById(R.id.btnUpto20);
-        btnCheck = findViewById(R,.id.btnCheck)
-
-
-
+        btnCheck = findViewById(R.id.btnCheck);
+        viewModel.getNum1().observe(this, number -> {
+            tvNum1.setText(String.valueOf(number));
+        });
+        viewModel.getNum2().observe(this, number -> {
+            tvNum2.setText(String.valueOf(number));
+        });
+        viewModel.getAnswerCorrect().observe(this, correct -> {
+            if(correct == null){
+                return;
+            }
+            if(correct){
+                Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+                viewModel.generateQuestion();
+                answerBox.setText(null);
+            }
+            else {
+                Toast.makeText(this, "Wrong answer!", Toast.LENGTH_SHORT).show();
+                answerBox.setText(null);
+            }
+        });
     }
 
     public void modeClicked(View view) {
         if (view.getId() == R.id.btnKefel) {
-            controller.normal();
+            viewModel.setGameType(GameType.Normal);
         }
         else if (view.getId() == R.id.btnUpto20) {
-            controller.upTo20();
+            viewModel.setGameType(GameType.UpTo20);
         } else if (view.getId() == R.id.btnChallenge) {
-            controller.challange();
+            viewModel.setGameType(GameType.Chellenge);
         }
     }
 
     public void checkClicked(View view) {
         String answer = answerBox.getText().toString();
         int intAnswer = Integer.parseInt(answer);
-        controller.checkAns(intAnswer);
-    }
-
-    public void displayNums(int num1, int num2) {
-        tvNum1.setText(""+num1);
-        tvNum2.setText(""+num2);
-    }
-    public void displayVictory(){
-        answerBox.setText(null);
-        Toast.makeText(this, "Very Well!", Toast.LENGTH_SHORT).show();
-    }
-
-    public void displayFailure() {
-        answerBox.setText(null);
-        Toast.makeText(this, "Almost! Too Bad", Toast.LENGTH_LONG).show();
+        viewModel.checkAns(intAnswer);
     }
 }
