@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:weightSum="7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <EditText
+        android:id="@+id/etFstName"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:hint="First Name"
+        android:textAlignment="center"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/etLstName"
+        android:textAlignment="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="Last Name"
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="218dp" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnIntent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:text="Login"
+        android:onClick="checkClicked"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="379dp" />
+</LinearLayout>

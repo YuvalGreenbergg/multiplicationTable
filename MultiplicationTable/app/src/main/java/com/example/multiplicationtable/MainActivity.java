@@ -1,5 +1,6 @@
 package com.example.multiplicationtable;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +22,12 @@ public class MainActivity extends AppCompatActivity {
     private EditText answerBox;
     private TextView tvNum1;
     private TextView tvNum2;
+    private TextView tvUserName;
     private Button btnKefel;
     private Button btnUpto20;
     private Button btnChallenge;
     private Button btnCheck;
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,15 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MathViewModel.class);
 
+        intent = getIntent();
+        String firstname = intent.getStringExtra("first name");
+        String lastname = intent.getStringExtra("last name");
+
         answerBox = findViewById(R.id.answerBox);
         tvNum1 = findViewById(R.id.tvNum1);
         tvNum2 = findViewById(R.id.tvNum2);
+        tvUserName = findViewById(R.id.tvUserName);
+        tvUserName.setText(firstname + " " + lastname);
         btnKefel = findViewById(R.id.btnKefel);
         btnChallenge = findViewById(R.id.btnChallenge);
         btnUpto20 = findViewById(R.id.btnUpto20);
